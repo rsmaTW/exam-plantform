@@ -44,6 +44,8 @@ public class QuizService {
     }
 
     public void delete(BlankQuizId blankQuizId) {
-        blankQuizRepository.delete(blankQuizId);
+        final BlankQuiz blankQuiz = blankQuizRepository.find(blankQuizId);
+        blankQuiz.delete();
+        blankQuizRepository.save(blankQuiz);
     }
 }

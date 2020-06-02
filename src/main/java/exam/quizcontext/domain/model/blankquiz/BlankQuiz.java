@@ -1,14 +1,17 @@
 package exam.quizcontext.domain.model.blankquiz;
 
 import exam.shared.Entity;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+@Getter
 public class BlankQuiz implements Entity<BlankQuiz> {
 
     private BlankQuizId blankQuizId;
     private String question;
     private String answer;
+    private boolean isDeleted;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
 
@@ -17,6 +20,7 @@ public class BlankQuiz implements Entity<BlankQuiz> {
         this.blankQuizId = blankQuizId;
         this.question = question;
         this.answer = answer;
+        this.isDeleted = false;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -33,24 +37,10 @@ public class BlankQuiz implements Entity<BlankQuiz> {
         this.updateTime = now;
     }
 
-    public BlankQuizId getBlankQuizId() {
-        return blankQuizId;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public LocalDateTime getCreateTime() {
-        return createTime;
-    }
-
-    public LocalDateTime getUpdateTime() {
-        return updateTime;
+    public void delete() {
+        LocalDateTime now = LocalDateTime.now();
+        this.isDeleted = true;
+        this.updateTime = now;
     }
 
     @Override

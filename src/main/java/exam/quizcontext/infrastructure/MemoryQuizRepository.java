@@ -36,10 +36,4 @@ public class MemoryQuizRepository implements BlankQuizRepository {
     public List<BlankQuiz> getAll() {
         return new ArrayList<>(blankQuizzes.values());
     }
-
-    @Override
-    public void delete(BlankQuizId blankQuizId) {
-
-        blankQuizzes.remove(blankQuizId);
-    }
 }
